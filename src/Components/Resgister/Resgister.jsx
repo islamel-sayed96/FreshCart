@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './Resgister.module.css';
 import { useFormik } from 'formik';
+import * as Yup from 'yup'
+//keda na ba2olo import kol 7aga mn el yup ..
 
 // useFormik
 
@@ -8,56 +10,75 @@ export default function Resgister() {
   function handleRegister(Values){
      console.log(Values);
   }
-  function validate(values){
-    let errors ={};
-    // errors haib2a errors fadi w ai error ha7oto goa el object da ..
-    //Name Errors ...
-    if(!values.name){
-      errors.name= ' Name is Required' ;
-    }
-    else if(values.name.length < 3){
-      errors.name= ' Name MinLength is 3' ;
-    }
-    else if(values.name.length > 10){
-      errors.name= ' Name MaxLength is 10' ;
-    }
 
-    //Email Errors ...
-    if(!values.email){
-      errors.email= ' Email is Required' ;
-    }
-    else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
-      errors.email= ' Invalid email address' ;
-    }
+  //Yup Validation
+  let validationSchema = Yup.object({
+    name:Yup.string().required('Name is required').min(3 , 'Name minlength is 3').max(10 , 'Name maxlength is 10'),
+    email:Yup.string().required('email is required').email('email is inValid'),
+    password:Yup.string().required('password is required').matches(/^[A-Z][A-Z0-9]{5,10}$/ , 'Password Must Start with UpperCase...'),
+    //matches de bta5od regular expression
+    rePassword:Yup.string().required('RePassword is required').oneOf([Yup.ref('password')] ,  'Passsword And RePassword Doesnt Match'),
+    //oneof de method bta5od array ba2olo ygia 7aga mn dol msh brahom
+    phone:Yup.string().required('Phone is required').matches(/^01[0125][0-9]{8}$/ , 'Phone must be valid number'),
+  })
+  //ba3mel varible asmo validation w baro7 andah 3la yup w el yup de goha 7aga asmha object
+  //yup de fekrtha n na badiha object w a2olha na 3aiz el object el ygilk ykon shabah el object da  
+
+
+  // function validate(values){
+  //   let errors ={};
+  //   // errors haib2a errors fadi w ai error ha7oto goa el object da ..
+  //   //Name Errors ...
+  //   if(!values.name){
+  //     errors.name= ' Name is Required' ;
+  //   }
+  //   else if(values.name.length < 3){
+  //     errors.name= ' Name MinLength is 3' ;
+  //   }
+  //   else if(values.name.length > 10){
+  //     errors.name= ' Name MaxLength is 10' ;
+  //   }
+
+  //   //Email Errors ...
+  //   if(!values.email){
+  //     errors.email= ' Email is Required' ;
+  //   }
+  //   else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+  //     errors.email= ' Invalid email address' ;
+  //   }
     
-   //Password Errors ...
-    if(!values.password){
-      errors.password= ' Password is Required' ;
-    }
-    else if(!/^[A-Z][A-Z0-9]+\.[A-Z]{5,10}$/.test(values.password)){
-      errors.password= 'Passsword Must Start With UpperCase....' ;
-    }
+  //  //Password Errors ...
+  //   if(!values.password){
+  //     errors.password= ' Password is Required' ;
+  //   }
+  //   else if(!/^[A-Z][A-Z0-9]+\.[A-Z]{5,10}$/.test(values.password)){
+  //     errors.password= 'Passsword Must Start With UpperCase....' ;
+  //   }
 
-    //RePassword Errors ...
-    if(!values.repassword){
-      errors.repassword= ' RePassword is Required' ;
-    }
-    else if(values.password !== values.rePassword){
-      errors.repassword= ' Passsword And RePassword Doesnt Match...' ;
-    }
+  //   //RePassword Errors ...
+  //   if(!values.repassword){
+  //     errors.repassword= ' RePassword is Required' ;
+  //   }
+  //   else if(values.password !== values.rePassword){
+  //     errors.repassword= ' Passsword And RePassword Doesnt Match...' ;
+  //   }
 
     
-    //Phone Errors ...
-    if(!values.phone){
-      errors.phone= ' phone is Required' ;
-    }
-    else if(!/^01[0125][0-9]{8}$/.test(values.phone)){
-      errors.phone= 'Phone Must be valid  egyption phone number' ;
-    }
+  //   //Phone Errors ...
+  //   if(!values.phone){
+  //     errors.phone= ' phone is Required' ;
+  //   }
+  //   else if(!/^01[0125][0-9]{8}$/.test(values.phone)){
+  //     errors.phone= 'Phone Must be valid  egyption phone number' ;
+  //   }
 
 
-    return errors;
-  }
+  //   return errors;
+  // }
+  
+  //msh hansta5dem el function bta3et el validate tani 3shan 3mlna npm & import ll library el asmha yup ..
+  //w de bta3mli validate gahez badl ma na a3melo
+
   let formik = useFormik({
     initialValues:{
       name:'',
@@ -66,7 +87,11 @@ export default function Resgister() {
       password:'',
       rePassword:'',
     },
-    validate,
+    // validate, 5las 3shan badelna el function ba yup 
+    // validationSchema:validation,
+    validationSchema,
+    //badiha el object el gai mn el yup 
+    //w momken badl ma a5li asmha validation a5liha nfs el asm validationSchema w aktbha mra wa7da badl  validationSchema:validation,
     // onSubmit:() => console.log('Hello')
     onSubmit: handleRegister
   })
