@@ -1,25 +1,70 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Resgister.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 //keda na ba2olo import kol 7aga mn el yup ..
+//useNavigate react router dom da hook hia 3amlha 
+
+
 
 // useFormik
 
 export default function Resgister() {
-  function handleRegister(Values){
-     console.log(Values);
-  }
+  let navigate = useNavigate();
+  const [isloading, setisloading] = useState(false); //loading spiner for register
 
+
+  async function handleRegister(values) {
+    setisloading(true);
+    try {
+      let response = await axios.post('https://localhost:7125/api/Account/Register', values, {
+        headers: {
+          'accept': 'text/plain',
+          'Content-Type': 'application/json'
+        }
+      });
+      let { data, status } = response;
+  
+      if (status === 200) {
+        console.log('Registration successful');
+        setisloading(false);
+        navigate('/login');
+      } else {
+        console.log('Unexpected response:', data);
+        setisloading(false);
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 400 && Array.isArray(error.response.data)) {
+          console.error('Validation errors:', error.response.data);
+          error.response.data.forEach(err => {
+            console.error(`${err.code}: ${err.description}`);
+          });
+        } else if (error.response.status === 415) {
+          console.error('Unsupported Media Type: Check the request headers and body format.');
+        } else {
+          console.error('Error:', error.response.status, error.response.data);
+        }
+      } else {
+        console.error('Error during registration:', error);
+      }
+      setisloading(false);
+    }
+  }
   //Yup Validation
   let validationSchema = Yup.object({
-    name:Yup.string().required('Name is required').min(3 , 'Name minlength is 3').max(10 , 'Name maxlength is 10'),
+    userName:Yup.string().required('Name is required').min(3 , 'Name minlength is 3').max(10 , 'Name maxlength is 10'),
+    fName:Yup.string().required('fName is required').min(3 , 'fName minlength is 3').max(10 , 'fName maxlength is 10'),
+    lName:Yup.string().required('lName is required').min(3 , 'lName minlength is 3').max(10 , 'lName maxlength is 10'),
     email:Yup.string().required('email is required').email('email is inValid'),
     password:Yup.string().required('password is required').matches(/^[A-Z][A-Z0-9]{5,10}$/ , 'Password Must Start with UpperCase...'),
+    //KEDA KOLHA CAPITAL M3A NUMBER
     //matches de bta5od regular expression
-    rePassword:Yup.string().required('RePassword is required').oneOf([Yup.ref('password')] ,  'Passsword And RePassword Doesnt Match'),
-    //oneof de method bta5od array ba2olo ygia 7aga mn dol msh brahom
-    phone:Yup.string().required('Phone is required').matches(/^01[0125][0-9]{8}$/ , 'Phone must be valid number'),
+    // rePassword:Yup.string().required('RePassword is required').oneOf([Yup.ref('password')] ,  'Passsword And RePassword Doesnt Match'),
+    // //oneof de method bta5od array ba2olo ygia 7aga mn dol msh brahom
+    // phone:Yup.string().required('Phone is required').matches(/^01[0125][0-9]{8}$/ , 'Phone must be valid number'),
   })
   //ba3mel varible asmo validation w baro7 andah 3la yup w el yup de goha 7aga asmha object
   //yup de fekrtha n na badiha object w a2olha na 3aiz el object el ygilk ykon shabah el object da  
@@ -81,11 +126,13 @@ export default function Resgister() {
 
   let formik = useFormik({
     initialValues:{
-      name:'',
-      phone:'',
+      userName:'',
+      fName:'',
+      lName:'',
+      // phone:'',
       email:'',
       password:'',
-      rePassword:'',
+      // rePassword:'',
     },
     // validate, 5las 3shan badelna el function ba yup 
     // validationSchema:validation,
@@ -110,25 +157,37 @@ export default function Resgister() {
   <div className="w-75 mx-auto py-4">
     <h3>Register Now: ..</h3>
     <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="name">Name</label>
+      <label htmlFor="userName">userName</label>
       <input className='form-control mb-2'
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}
-        value={formik.values.name}
+        value={formik.values.userName}
         type="text" 
-        name="name" 
-        id="name" />
-        {formik.errors.name && formik.touched.name ?<div className="alert alert-danger">{formik.errors.name}</div> : null}
+        name="userName" 
+        id="userName" />
+        {formik.errors.userName && formik.touched.userName ?<div className="alert alert-danger">{formik.errors.userName}</div> : null}
      
-      <label htmlFor="phone">Phone : </label>
+      <label htmlFor="fName">fName : </label>
       <input className='form-control mb-2'
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}
-        value={formik.values.phone}
-        type="tel" 
-        name="phone" 
-        id="phone" />
-        {formik.errors.phone && formik.touched.phone ?<div className="alert alert-danger">{formik.errors.phone}</div> : null}
+        value={formik.values.fName}
+        // type="tel"  da lw phone
+        type="text"
+        name="fName" 
+        id="fName" />
+        {formik.errors.fName && formik.touched.fName ?<div className="alert alert-danger">{formik.errors.fName}</div> : null}
+
+        <label htmlFor="lName">lName</label>
+        <input className='form-control mb-2'
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        value={formik.values.lName}
+        type="text" 
+        name="lName" 
+        id="lName" />
+         {formik.errors.lName && formik.touched.lName ?<div className="alert alert-danger">{formik.errors.lName}</div> : null}
+
 
       <label htmlFor="email">Email: </label>
       <input className='form-control mb-2'
@@ -150,17 +209,12 @@ export default function Resgister() {
         id="password" />
          {formik.errors.password && formik.touched.password ?<div className="alert alert-danger">{formik.errors.password}</div> : null}
 
-      <label htmlFor="rePassword">RePassword</label>
-      <input className='form-control mb-2'
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        value={formik.values.rePassword}
-        type="password" 
-        name="rePassword" 
-        id="rePassword" />
-         {formik.errors.rePassword && formik.touched.rePassword ?<div className="alert alert-danger">{formik.errors.rePassword}</div> : null}
+        {isloading ?<button  type='button' className='btn bg-main text-white'><i className='fas fa-spinner fa-spin'></i></button> : 
+        
+        <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Register</button>
+        }
 
-        <button type='submit' className='btn bg-main text-white'>Register</button>
+
     </form>
   </div>
   </>
