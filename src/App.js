@@ -11,6 +11,7 @@ import CategorySlider from './Components/CategorySlider/CategorySlider';
 import NotFound from './Components/NotFound/NotFound';
 import { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 
 
 function App(){
@@ -27,10 +28,10 @@ function App(){
     }
     let routers= createBrowserRouter([
         {path:'',element:<Layout userData={userData}/> ,children:[
-            {index:true,element:<Home/>},
-            {path:'products',element:<ProductDetails/>},
-            {path:'about',element:<About/>},
-            {path:'categories',element:<CategorySlider/>},
+            {index:true,element: <ProtectedRoute><Home/></ProtectedRoute>},
+            {path:'products',element:<ProtectedRoute><ProductDetails/></ProtectedRoute> },
+            {path:'about',element:<ProtectedRoute><About/></ProtectedRoute>},
+            {path:'categories',element:<ProtectedRoute><CategorySlider/></ProtectedRoute>},
             {path:'register',element:<Resgister/>},
             {path:'login',element:<Login saveUserData={saveUserData}/>},
             {path:'*',element:<NotFound/>},
