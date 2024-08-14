@@ -12,6 +12,7 @@ import NotFound from './Components/NotFound/NotFound';
 import { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
+import FeaturedProuducts from './Components/FeaturedProuducts/FeaturedProuducts';
 
 
 function App(){
@@ -29,7 +30,8 @@ function App(){
     let routers= createBrowserRouter([
         {path:'',element:<Layout userData={userData}/> ,children:[
             {index:true,element: <ProtectedRoute><Home/></ProtectedRoute>},
-            {path:'products',element:<ProtectedRoute><ProductDetails/></ProtectedRoute> },
+            {path:'products',element:<ProtectedRoute><FeaturedProuducts/></ProtectedRoute> },
+            {path:'productDetails/:id',element:<ProtectedRoute><ProductDetails/></ProtectedRoute> },
             {path:'about',element:<ProtectedRoute><About/></ProtectedRoute>},
             {path:'categories',element:<ProtectedRoute><CategorySlider/></ProtectedRoute>},
             {path:'register',element:<Resgister/>},

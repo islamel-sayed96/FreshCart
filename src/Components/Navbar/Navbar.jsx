@@ -44,7 +44,7 @@ export default function Navbar({userData}) {
        </li>
        
        <li className="nav-item">
-         <Link className="nav-link" to="categories">Categories</Link>
+         <Link className="nav-link" to="productDetails">productDetails</Link>
        </li>
        <li className="nav-item">
          <Link className="nav-link" to="brands">Brands</Link>

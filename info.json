@@ -1,0 +1,260 @@
+{
+  "data":[
+  {
+    "id": 1,
+    "img": "../assets/items/news-1.jpg",
+    "title": "Smart LED",
+    "subtitle": "Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum",
+    "image": [
+      "../assets/items/news-5.jpg",
+      "../assets/items/news-5.jpg"
+    ],
+    "category": {
+      "id": 1,
+      "name": "Electronics",
+      "slug": "electronics"
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "id": 2,
+    "img": "../assets/items/news-2.jpg",
+    "title": "4K Smart",
+    "subtitle": "Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande",
+    "image": [
+      "../assets/items/news-5.jpg",
+      "../assets/items/news-5.jpg"
+    ],
+    "category": {
+      "id": 2,
+      "name": "Electronics",
+      "slug": "electronics"
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "id": 3,
+    "img": "../assets/items/news-3.jpg",
+    "title": "Shield LED",
+    "subtitle": "Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam",
+    "image": [
+      "../assets/items/news-5.jpg",
+      "../assets/items/news-5.jpg"
+    ],
+    "category": {
+      "id": 3,
+      "name": "Electronics",
+      "slug": "electronics"
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "id": 4,
+    "img": "../assets/items/news-4.jpg",
+    "title": "43 Inch",
+    "subtitle": "Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder",
+    "image": [
+      "../assets/items/news-5.jpg",
+      "../assets/items/news-5.jpg"
+    ],
+    "category": {
+      "id": 4,
+      "name": "Electronics",
+      "slug": "electronics"
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "id": 5,
+    "img": "../assets/items/news-5.jpg",
+    "title": "Glaxy Buds",
+    "subtitle": "Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius",
+    "image": [
+      "../assets/items/news-5.jpg",
+      "../assets/items/news-5.jpg"
+    ],
+    "category": {
+      "id": 5,
+      "name": "Electronics",
+      "slug": "electronics"
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "id": 6,
+    "img": "../assets/items/news-1.jpg",
+    "title": "Smart LED",
+    "subtitle": "Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum",
+    "category": {
+      "id": 6,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "id": 7,
+    "image": "../assets/items/news-2.jpg",
+    "title": "4K Smart",
+    "subtitle": "Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande",
+    "category": {
+      "id": 7,
+      "name": "Electronics",
+      "slug": "electronics",
+      "img": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "id": 8,
+    "img": "../assets/items/news-3.jpg",
+    "title": "Shield LED",
+    "subtitle": "Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam",
+    "category": {
+      "id": 8,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "_id": 9,
+    "img": "../assets/items/news-4.jpg",
+    "title": "43 Inch",
+    "subtitle": "Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder",
+    "category": {
+      "_id": 9,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "_id": 10,
+    "img": "../assets/items/news-5.jpg",
+    "title": "Glaxy Buds",
+    "subtitle": "Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius",
+    "category": {
+      "_id": 1,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "_id": 11,
+    "img": "../assets/items/news-1.jpg",
+    "title": "Smart LED",
+    "subtitle": "Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum",
+    "category": {
+      "_id": 1,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "_id": 12,
+    "img": "../assets/items/news-2.jpg",
+    "title": "4K Smart",
+    "subtitle": "Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande",
+    "category": {
+      "_id": 1,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "_id": 13,
+    "img": "../assets/items/news-3.jpg",
+    "title": "Shield LED",
+    "subtitle": "Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam",
+    "category": {
+      "_id": 1,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":7000,
+    "raitingAvg":4.5
+  },
+  {
+    "_id": 14,
+    "img": "../assets/items/news-4.jpg",
+    "title": "43 Inch",
+    "subtitle": "Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder",
+    "category": {
+      "_id": 14,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":6000,
+    "raitingAvg":6.5
+  },
+  {
+    "_id": 15,
+    "img": "../assets/items/news-5.jpg",
+    "title": "Glaxy Buds",
+    "subtitle": "Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius",
+    "category": {
+      "_id": 15,
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": [
+        "../assets/items/news-5.jpg",
+        "../assets/items/news-5.jpg"
+      ]
+    },
+    "price":17000,
+    "raitingAvg":5.5
+  }
+]
+}
+
